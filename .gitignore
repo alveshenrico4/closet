@@ -1,0 +1,7 @@
+node_modules/
+public/uploads/originals/*
+!public/uploads/originals/.gitkeep
+public/uploads/processed/*
+!public/uploads/processed/.gitkeep
+db.json
+.env
