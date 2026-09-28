@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closet — monte seus looks</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="bg-pattern" aria-hidden="true"></div>
+
+<header>
+  <div class="header-inner">
+    <svg class="hanger-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <path d="M32 8a5 5 0 1 1 4.9 6H31v4l22 13c2 1.2 3 2.6 3 4.4 0 2-1.6 3.6-3.6 3.6H10.6C8.6 39 7 37.4 7 35.4c0-1.8 1-3.2 3-4.4l22-13v-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <h1>Closet</h1>
+      <p>Escaneie suas roupas e monte looks sem tirar nada do cabide.</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <button data-view="wardrobe" class="active">Guarda-roupa</button>
+  <button data-view="builder">Montar look</button>
+  <button data-view="saved">Looks salvos</button>
+</nav>
+
+<main>
+
+  <!-- GUARDA-ROUPA -->
+  <section class="view active" id="view-wardrobe">
+    <form class="upload-box" id="upload-form">
+      <input id="file-input" name="photo" type="file" accept="image/*" capture="environment" required>
+      <label for="file-input" id="upload-label">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Adicionar peça</span>
+      </label>
+      <select id="category-input" name="category">
+        <option value="top">Top</option>
+        <option value="bottom">Calça</option>
+        <option value="calçado">Calçado</option>
+        <option value="casaco">Casaco</option>
+        <option value="acessório">Acessório</option>
+      </select>
+      <p class="hint-text">A gente remove o fundo automaticamente pra peça ficar isolada no editor.</p>
+    </form>
+
+    <div class="grid" id="wardrobe-grid"></div>
+    <div class="empty" id="wardrobe-empty" style="display:none;">
+      <svg viewBox="0 0 64 64" width="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14h24l4 8H16l4-8Z"/><path d="M16 22v28h32V22"/></svg>
+      <p>Seu guarda-roupa está vazio. Adicione a primeira peça acima.</p>
+    </div>
+  </section>
+
+  <!-- MONTAR LOOK -->
+  <section class="view" id="view-builder">
+    <div class="builder-layout">
+      <div class="canvas-wrap" id="canvas">
+        <p class="hint" id="canvas-hint">Toque numa peça abaixo para colocá-la aqui. Arraste para posicionar, use a bolinha para redimensionar.</p>
+      </div>
+      <div class="tray" id="tray"></div>
+      <div class="builder-actions">
+        <button type="button" class="secondary" id="clear-canvas">Limpar tela</button>
+      </div>
+      <div class="save-row">
+        <input id="look-name" placeholder="Nome do look (ex: Sexta casual)">
+        <button type="button" id="save-look">Salvar look</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKS SALVOS -->
+  <section class="view" id="view-saved">
+    <div class="looks-grid" id="looks-grid"></div>
+    <div class="empty" id="saved-empty" style="display:none;">
+      <svg viewBox="0 0 64 64" width="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M32 10l6 12 13 2-9.5 9 2 13L32 40l-11.5 6 2-13L13 24l13-2 6-12Z"/></svg>
+      <p>Nenhum look salvo ainda. Monte um na aba "Montar look".</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
